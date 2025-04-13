@@ -1,0 +1,57 @@
+@use '../../../assets//scss/variables' as *;
+
+.inputContainer {
+    position: relative;
+}
+
+.label {
+    display: block;
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+    padding-left: $space-md;
+    padding-right: 60px;
+    font-size: $text-md;
+    border: 1px solid #545F7D26;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input:focus {
+    border-color: $secondary-color;
+}
+
+.placeholder {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: $text-primary-color;
+    font-size: $text-sm;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.input:focus+.placeholder,
+.input:not(:placeholder-shown)+.placeholder {
+    top: -8px;
+    left: 12px;
+    font-size: $text-xs;
+    background: white;
+    padding: 0 4px;
+}
+
+.toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $secondary-color;
+    font-weight: 600;
+    font-size: $text-xs;
+    cursor: pointer;
+    user-select: none;
+}

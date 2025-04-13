@@ -17,8 +17,7 @@ html {
 body {
     font-family: $font-work-sans;
     line-height: 1.5;
-    color: #1A2E55;
-    background-color: #FFFFFF;
+    // color: #1A2E55;
 }
 
 a {
@@ -50,9 +49,4 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-}
-
-:focus {
-    outline: 2px solid #00C2CB;
-    outline-offset: 2px;
 }

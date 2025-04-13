@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./assets/scss/main.scss"
+import LoginPage from "./pages/login/LoginPage"
 
 function App() {
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <div>Home Page</div>
+      element: <LoginPage />
     }
   ])
 
