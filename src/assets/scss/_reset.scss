@@ -1,0 +1,58 @@
+@use './variables' as *;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    line-height: 1.15; // Improves readability
+    -webkit-text-size-adjust: 100%; // Prevents iOS text size adjustment
+}
+
+body {
+    font-family: $font-work-sans;
+    line-height: 1.5;
+    color: #1A2E55;
+    background-color: #FFFFFF;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+:focus {
+    outline: 2px solid #00C2CB;
+    outline-offset: 2px;
+}
