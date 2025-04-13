@@ -1,4 +1,4 @@
-import styles from './login.module.scss'
+import styles from './Login.module.scss'
 
 export default function LoginIllustration() {
     return (

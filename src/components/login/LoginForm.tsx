@@ -1,11 +1,14 @@
 import { useState } from "react";
 import InputField from "../ui/input/InputField";
-import styles from './login.module.scss'
+import styles from './Login.module.scss'
 import Button from "../ui/button/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigate = useNavigate()
 
     return (
         <div className={styles.formContainer}>
@@ -31,7 +34,7 @@ export default function LoginForm() {
                     />
                     <p>Forgot Password?</p>
                 </div>
-                <Button>
+                <Button onClick={() => navigate('/users')}>
                     LOG IN
                 </Button>
             </div>
