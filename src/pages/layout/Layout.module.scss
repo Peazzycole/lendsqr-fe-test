@@ -15,5 +15,16 @@
         flex: 1;
         width: 100%;
         padding: 60px;
+        height: calc(100vh - 98px);
+        overflow-y: auto;
+        background-color: #fbfbfb;
+
+        @include breakpoint("lg") {
+            padding: 40px;
+        }
+
+        @include breakpoint("md") {
+            padding: 24px;
+        }
     }
 }

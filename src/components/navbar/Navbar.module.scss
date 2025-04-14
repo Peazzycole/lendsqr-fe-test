@@ -7,7 +7,7 @@
     justify-content: space-between;
     padding: 24px 30px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 0px 20px #0000000A;
 
     @include breakpoint("md") {
         padding: 16px
@@ -86,7 +86,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 0 $radius-xl $radius-xl 0;
+            border-radius: 0 $radius-md $radius-md 0;
             transition: all 0.2s ease;
 
             &:hover {

@@ -1,0 +1,33 @@
+@use '../../assets/scss/variables' as *;
+@use '../../assets/scss/mixins' as *;
+
+.userContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    .title {
+        color: $text-secondary-color;
+        font-weight: 500;
+        font-size: $text-2xl;
+        line-height: 100%;
+    }
+
+    .cardContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 26px;
+
+        @include breakpoint('xl') {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include breakpoint('lg') {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include breakpoint('sm') {
+            grid-template-columns: 1fr;
+        }
+    }
+}
