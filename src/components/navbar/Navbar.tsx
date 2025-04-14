@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.scss';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import bellIcon from '../../assets/notification.png';
 import avatar from '../../assets/avatar.png';
 import arrowDown from '../../assets/dropdown.svg';
 import searchIcon from '../../assets/search.svg';
+import Sidebar from '../sidebar/Sidebar';
 
 const Navbar: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -20,19 +21,16 @@ const Navbar: React.FC = () => {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth <= 768) {
-                setPlaceholder('Search'); // Mobile screen
+                setPlaceholder('Search');
             } else {
-                setPlaceholder('Search for anything'); // Desktop screen
+                setPlaceholder('Search for anything');
             }
         };
 
-        // Set the initial placeholder based on screen size
         handleResize();
 
-        // Add event listener for window resize
         window.addEventListener('resize', handleResize);
 
-        // Cleanup event listener on component unmount
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -46,9 +44,8 @@ const Navbar: React.FC = () => {
                 </div>
                 <div className={styles.hamburger} onClick={toggleMenu}>
                     <FontAwesomeIcon
-                        width={24}
-                        height={24}
-                        icon={menuOpen ? faTimes : faBars}
+                        size="xl"
+                        icon={faBars}
                     />
                 </div>
 
@@ -73,6 +70,25 @@ const Navbar: React.FC = () => {
                     <span className={styles.userName}>Adeji</span>
                     <img className={styles.dropdownArrow} src={arrowDown} alt="" />
                 </div>
+            </div>
+
+            {/* Overlay */}
+            {menuOpen && (
+                <div
+                    className={`${styles.overlay} ${menuOpen ? styles.open : ''}`}
+                    onClick={toggleMenu}
+                ></div>
+            )}
+
+            {/* Mobile Menu */}
+            <div
+                className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}
+            >
+                <Sidebar
+                    height={"100vh"}
+                    boxShadow='none'
+                    toggleMenu={toggleMenu}
+                />
             </div>
         </nav>
     );
