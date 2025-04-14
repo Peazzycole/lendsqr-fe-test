@@ -3,6 +3,7 @@ import "./assets/scss/main.scss"
 import LoginPage from "./pages/login/LoginPage"
 import UsersPage from "./pages/users/UsersPage"
 import Layout from "./pages/layout/Layout"
+import UserDetailsPage from "./pages/userDetails/UserDetailsPage"
 
 function App() {
 
@@ -22,6 +23,10 @@ function App() {
         {
           path: '',
           element: <UsersPage />
+        },
+        {
+          path: ':userId',
+          element: <UserDetailsPage />
         }
       ]
     }

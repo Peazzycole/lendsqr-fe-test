@@ -2,31 +2,26 @@ import React, { useState } from 'react';
 import styles from './UsersTable.module.scss';
 
 // Sample icons (you can replace them with your own icons or an icon library)
-import { UserData } from '../../../utils/types';
+import { User } from '../../../utils/types';
 import filterIcon from '../../../assets/filter.svg'
 import menuIcon from '../../../assets/menu.svg'
 import { ActionMenu } from '../actionMenu/ActionMenu';
 
 interface UsersTable {
-    data: UserData[];
+    data: User[];
 }
 
 export const UsersTable: React.FC<UsersTable> = ({ data }) => {
-    // State to show/hide the filter panel
     const [showFilter, setShowFilter] = useState<boolean>(false);
-
-    // State to keep track of which row's action menu is open (store row ID or null)
     const [actionMenuOpen, setActionMenuOpen] = useState<string | null>(null);
     const [menuPosition, setMenuPosition] = useState<{ top: number, left: number }>({ top: 0, left: 0 })
 
-    // Toggle filter panel
     const handleToggleFilter = () => {
         setShowFilter(!showFilter);
     };
 
-    // Toggle action menu for a specific row
     const handleToggleActionMenu = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
-        const buttonElement = event.currentTarget; // The button that was clicked
+        const buttonElement = event.currentTarget;
         const rect = buttonElement.getBoundingClientRect(); // Get the position of the button
         setMenuPosition({
             top: rect.bottom + window.scrollY,
@@ -98,11 +93,11 @@ export const UsersTable: React.FC<UsersTable> = ({ data }) => {
                     <div className={styles.dataItem}>{user.dateJoined}</div>
                     <div className={styles.dataItem}>
                         <span
-                            className={`${styles.statusBadge} ${user.status === 'Active'
+                            className={`${styles.statusBadge} ${user.status === 'active'
                                 ? styles.active
-                                : user.status === 'Inactive'
+                                : user.status === 'inactive'
                                     ? styles.inactive
-                                    : user.status === 'Pending'
+                                    : user.status === 'pending'
                                         ? styles.pending
                                         : styles.blacklisted
                                 }`}
@@ -112,12 +107,16 @@ export const UsersTable: React.FC<UsersTable> = ({ data }) => {
                         <div className={styles.dataItem}>
                             <button
                                 className={styles.actionButton}
-                                onClick={(e) => handleToggleActionMenu(user.id, e)}
+                                onClick={(e) => handleToggleActionMenu(user.id.toString(), e)}
                             >
                                 <img src={menuIcon} alt="" />
                             </button>
-                            {actionMenuOpen === user.id && (
-                                <ActionMenu onClose={closeActionMenu} position={menuPosition} />
+                            {actionMenuOpen === user.id.toString() && (
+                                <ActionMenu
+                                    onClose={closeActionMenu}
+                                    position={menuPosition}
+                                    userId={user.id}
+                                />
                             )}
                         </div>
                     </div>

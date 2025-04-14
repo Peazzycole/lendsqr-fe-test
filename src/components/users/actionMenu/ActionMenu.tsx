@@ -5,6 +5,9 @@ import styles from './ActionMenu.module.scss';
 import eyeIcon from '../../../assets/eye.svg'
 import userIcon from '../../../assets/np_user.svg'
 import userDeletecon from '../../../assets/np_delete.svg'
+import { useNavigate } from 'react-router-dom';
+import { useUsers } from '../../context/UsersContext';
+import { saveUserDetails } from '../../../services/storage';
 
 interface ActionMenuProps {
     onClose: () => void;
@@ -12,25 +15,28 @@ interface ActionMenuProps {
         top: number
         left: number
     }
+    userId: number
 }
 
 
 
-export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, position }) => {
+export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, position, userId }) => {
+    const { users } = useUsers()
+    const navigate = useNavigate()
+
     const handleViewDetails = () => {
-        // your logic here
-        console.log('View Details');
+        const user = users.filter((val) => val.id === userId)
+        saveUserDetails('selectedUser', user[0])
+        navigate(`/users/${userId}`)
         onClose();
     };
 
     const handleBlacklistUser = () => {
-        // your logic here
         console.log('Blacklist User');
         onClose();
     };
 
     const handleActivateUser = () => {
-        // your logic here
         console.log('Activate User');
         onClose();
     };

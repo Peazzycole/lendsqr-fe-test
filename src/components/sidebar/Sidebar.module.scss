@@ -10,12 +10,16 @@
     padding-block: 39px;
     display: flex;
     flex-direction: column;
-    scrollbar-width: none;
-    scrollbar-color: transparent transparent;
+
+    // scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 0
+    }
 
     &:hover {
-        scrollbar-width: thin;
-        scrollbar-color: #80879c transparent;
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
     }
 
     @include breakpoint('md') {

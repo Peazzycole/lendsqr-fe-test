@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
         <nav className={styles.navbar}>
             <div className={styles.logoAndSearchContainer}>
                 <div className={styles.logo}>
-                    <img src='./logo.svg' alt="LendSQR Logo" />
+                    <img src='/logo.svg' alt="LendSQR Logo" />
                 </div>
                 <div className={styles.hamburger} onClick={toggleMenu}>
                     <FontAwesomeIcon

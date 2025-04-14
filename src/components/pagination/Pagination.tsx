@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styles from './Pagination.module.scss';
 
 interface PaginationProps {
     totalItems: number;
     itemsPerPage: number;
+    currentPage: number;
+    setCurrentPage: Dispatch<SetStateAction<number>>
 }
 
-const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage }) => {
-    const [currentPage, setCurrentPage] = useState(1);
+const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, currentPage, setCurrentPage }) => {
+    // const [currentPage, setCurrentPage] = useState(1);
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const handlePageChange = (page: number) => {

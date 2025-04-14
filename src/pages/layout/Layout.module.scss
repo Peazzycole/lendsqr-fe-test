@@ -6,7 +6,7 @@
     .sidebar {
         width: 283px;
 
-        @include breakpoint("md") {
+        @include breakpoint("lg") {
             display: none;
         }
     }
