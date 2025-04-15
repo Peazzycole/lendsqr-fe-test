@@ -11,9 +11,10 @@ type InputFieldProps = {
     height?: string
     borderRadius?: string
     border?: string
+    error?: string
 };
 
-const InputField: React.FC<InputFieldProps> = ({ label, type = 'text', value, onChange, animatePlaceholder, height, borderRadius, border, name }) => {
+const InputField: React.FC<InputFieldProps> = ({ label, type = 'text', value, onChange, animatePlaceholder, height, borderRadius, border, name, error }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const isPassword = type === 'password';
@@ -23,7 +24,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, type = 'text', value, on
         <div className={styles.inputContainer}>
             <label className={styles.label}>
                 <input
-                    className={`${styles.input} ${animatePlaceholder && styles.animateInputPlaceholder}`}
+                    className={`${styles.input} ${error && styles.errorField} ${animatePlaceholder && styles.animateInputPlaceholder}`}
                     type={inputType}
                     name={name}
                     placeholder=" "
@@ -41,6 +42,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, type = 'text', value, on
                     </span>
                 )}
             </label>
+            {error && <span className={styles.errorMessage}>{error}</span>}
         </div>
     );
 };

@@ -9,6 +9,16 @@
     position: relative;
 }
 
+.errorField {
+    border: 1px solid red !important;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+
 .input {
     width: 100%;
     height: 50px;
