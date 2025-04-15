@@ -6,21 +6,38 @@ import styles from './UserDetailsPage.module.scss'
 import { useNavigate } from 'react-router-dom'
 import { User } from '../../utils/types'
 import { getUserDetails } from '../../services/storage'
+import { useUsers } from '../../context/UsersContext'
+import { ToastContainer } from 'react-toastify'
 
 export default function UserDetailsPage() {
     const navigate = useNavigate()
 
+    const { blacklistUser, activateUser, deactivateUser } = useUsers()
     const [userDetails, setUserDetails] = useState<User>();
 
     useEffect(() => {
         const storedUserDetails = getUserDetails('selectedUser');
         if (storedUserDetails) {
             setUserDetails(storedUserDetails);
-            console.log(storedUserDetails)
         } else {
             console.error('No user details found in local storage');
         }
     }, []);
+
+    const handleActivateUser = (userId: string) => {
+        activateUser(userId);
+        setUserDetails((prev) => prev ? { ...prev, status: 'active' } : prev);
+    };
+
+    const handleBlacklistUser = (userId: string) => {
+        blacklistUser(userId);
+        setUserDetails((prev) => prev ? { ...prev, status: 'blacklisted' } : prev);
+    };
+
+    const handleDeactivateUser = (userId: string) => {
+        deactivateUser(userId);
+        setUserDetails((prev) => prev ? { ...prev, status: 'inactive' } : prev);
+    };
 
     return (
         userDetails && (<div className={styles.container}>
@@ -30,20 +47,51 @@ export default function UserDetailsPage() {
             </div>
             <div className={styles.headerTextAndButtonContainer}>
                 <h1>User Details</h1>
-                <div>
-                    <button className={styles.danger}>Blacklist User</button>
-                    <button>Activate User</button>
-                </div>
+                {(userDetails.status === 'inactive' || userDetails.status === 'pending') && <div>
+                    <button
+                        className={styles.danger}
+                        onClick={() => handleBlacklistUser(userDetails.id)}
+                    >
+                        Blacklist User
+                    </button>
+                    <button onClick={() => handleActivateUser(userDetails.id)}>
+                        Activate User
+                    </button>
+                </div>}
+                {userDetails.status === 'active' && <div>
+                    <button
+                        className={styles.danger}
+                        onClick={() => handleBlacklistUser(userDetails.id)}
+                    >
+                        Blacklist User
+                    </button>
+                    <button onClick={() => handleDeactivateUser(userDetails.id)}>
+                        Deactivate User
+                    </button>
+                </div>}
+                {userDetails.status === 'blacklisted' && <div>
+                    <button onClick={() => handleActivateUser(userDetails.id)}>
+                        Activate User
+                    </button>
+                </div>}
             </div>
+
             <DetailsHeader
                 fullName={userDetails.fullName}
-                bankId={userDetails.bank}
+                bankId={userDetails.bankId}
                 tier={userDetails.tier}
                 balance={userDetails.balance}
                 accountNumber={userDetails.accountNumber}
                 bank={userDetails.bank}
             />
             <DetailsContent userDetails={userDetails} />
+            <ToastContainer
+                position='top-center'
+                theme='colored' autoClose={2000}
+                toastStyle={{
+                    backgroundColor: '#39CDCC',
+                }}
+            />
         </div>)
     )
 }

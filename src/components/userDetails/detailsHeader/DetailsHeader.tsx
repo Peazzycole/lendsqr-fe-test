@@ -37,8 +37,8 @@ export default function DetailsHeader({
                 <div className={styles.tierContainer}>
                     <span>User's Tier</span>
                     <div>
-                        {[1, 2, 3].map((val) => (
-                            <img src={val > tier ? starIcon : starFilledIcon} alt="" />
+                        {[1, 2, 3].map((val, i) => (
+                            <img key={i} src={val > tier ? starIcon : starFilledIcon} alt="" />
                         ))}
                     </div>
                 </div>

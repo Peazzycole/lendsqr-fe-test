@@ -21,10 +21,12 @@
 
         @include breakpoint("lg") {
             padding: 40px;
+            height: auto;
         }
 
         @include breakpoint("md") {
             padding: 24px;
+            height: auto;
         }
     }
 }

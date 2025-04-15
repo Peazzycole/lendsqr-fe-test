@@ -6,6 +6,7 @@ import { User } from '../../../utils/types';
 import filterIcon from '../../../assets/filter.svg'
 import menuIcon from '../../../assets/menu.svg'
 import { ActionMenu } from '../actionMenu/ActionMenu';
+import { formatDate } from '../../../utils/dateformatter';
 
 interface UsersTable {
     data: User[];
@@ -90,7 +91,7 @@ export const UsersTable: React.FC<UsersTable> = ({ data }) => {
                     <div className={styles.dataItem}>{user.username}</div>
                     <div className={styles.dataItem}>{user.email}</div>
                     <div className={styles.dataItem}>{user.phoneNumber}</div>
-                    <div className={styles.dataItem}>{user.dateJoined}</div>
+                    <div className={styles.dataItem}>{formatDate(user.dateJoined)}</div>
                     <div className={styles.dataItem}>
                         <span
                             className={`${styles.statusBadge} ${user.status === 'active'

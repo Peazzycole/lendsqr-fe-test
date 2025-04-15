@@ -16,12 +16,15 @@
 
 .headerRow {
     display: grid;
-    grid-template-columns: repeat(6, minmax(150px, 1fr));
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr) minmax(230px, 2fr) minmax(200px, 1fr) minmax(250px, 2fr) minmax(230px, 1fr);
+
     font-weight: 600;
     color: $text-primary-color;
     font-size: $text-xs;
     text-transform: uppercase;
     line-height: 100%;
+    padding-right: 1rem;
+
 }
 
 .headerItem {
@@ -29,6 +32,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
 }
 
 .filterIcon {
@@ -39,7 +43,7 @@
 
 .dataRow {
     display: grid;
-    grid-template-columns: repeat(6, minmax(150px, 1fr));
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr) minmax(230px, 2fr) minmax(200px, 1fr) minmax(250px, 2fr) minmax(230px, 1fr);
     border-bottom: 1px solid #eee;
     padding-right: 1rem;
 
@@ -58,13 +62,13 @@
     line-height: 100%;
     justify-content: space-between;
     position: relative;
+    white-space: nowrap;
 
     &:last-child {
         padding-right: 12px;
     }
 }
 
-/* Status badges */
 .statusBadge {
     padding: 6px 12px;
     display: flex;
@@ -74,6 +78,7 @@
     font-size: $text-sm;
     font-weight: normal;
     line-height: 100%;
+    text-transform: capitalize;
 }
 
 .active {
@@ -96,7 +101,6 @@
     color: #E4033B;
 }
 
-/* Action button for the three-dot menu */
 .actionButton {
     background: transparent;
     border: none;

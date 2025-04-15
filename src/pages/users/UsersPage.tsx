@@ -8,16 +8,25 @@ import moneyIcon from '../../assets/money.png'
 import { UsersTable } from '../../components/users/usersTable/UsersTable'
 import Pagination from '../../components/pagination/Pagination'
 import { useState } from 'react'
-import { useUsers } from '../../components/context/UsersContext'
+import { useUsers } from '../../context/UsersContext'
+import Loading from '../../components/loading/Loading'
 
 export default function UsersPage() {
-  const { users } = useUsers()
+  const { users, stats, isLoading } = useUsers()
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentUsers = users.slice(indexOfFirstItem, indexOfLastItem);
+
+  if (isLoading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <Loading />
+      </div>
+    )
+  }
 
   return (
     <div className={styles.userContainer}>
@@ -26,22 +35,22 @@ export default function UsersPage() {
         <DetailsCard
           icon={personIcon}
           title='Users'
-          amount={2453}
+          amount={stats.totalUsers}
         />
         <DetailsCard
           icon={peopleIcon}
           title='Active Users'
-          amount={2453}
+          amount={stats.activeUsers}
         />
         <DetailsCard
           icon={fileIcon}
           title='Users with loans'
-          amount={12453}
+          amount={stats.usersWithLoans}
         />
         <DetailsCard
           icon={moneyIcon}
           title='Users with savings'
-          amount={102453}
+          amount={stats.usersWithSavings}
         />
       </div>
       <div>

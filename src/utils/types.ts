@@ -9,7 +9,7 @@ export interface UserData {
 }
 
 export interface User {
-    id: number;
+    id: string;
     fullName: string;
     email: string;
     phoneNumber: string;
@@ -25,6 +25,7 @@ export interface User {
     officeEmail: string;
     monthlyIncome: string;
     loanRepayment: number;
+    savings: number;
     twitter: string;
     facebook: string;
     instagram: string;

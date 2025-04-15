@@ -49,8 +49,8 @@ const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
                             <h3>{menu.name}</h3>
 
                             <ul>
-                                {menu.subCategories.map((category) => (
-                                    <li className={category.name === "Users" ? styles.selected : ""}>
+                                {menu.subCategories.map((category, i) => (
+                                    <li key={i} className={category.name === "Users" ? styles.selected : ""}>
                                         <img src={category.icon} alt="" />
                                         <span>{category.name}</span>
                                     </li>

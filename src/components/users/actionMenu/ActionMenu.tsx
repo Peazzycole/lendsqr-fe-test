@@ -6,7 +6,7 @@ import eyeIcon from '../../../assets/eye.svg'
 import userIcon from '../../../assets/np_user.svg'
 import userDeletecon from '../../../assets/np_delete.svg'
 import { useNavigate } from 'react-router-dom';
-import { useUsers } from '../../context/UsersContext';
+import { useUsers } from '../../../context/UsersContext';
 import { saveUserDetails } from '../../../services/storage';
 
 interface ActionMenuProps {
@@ -15,7 +15,7 @@ interface ActionMenuProps {
         top: number
         left: number
     }
-    userId: number
+    userId: string
 }
 
 
