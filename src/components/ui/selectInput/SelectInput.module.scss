@@ -19,6 +19,7 @@
     border-radius: 8px;
     cursor: pointer;
     color: #21334F;
+    gap: 10px
 }
 
 .options {
@@ -35,6 +36,13 @@
     padding: 0;
     max-height: 150px;
     overflow-y: auto;
+
+
+}
+
+.top {
+    bottom: 105%;
+    top: auto
 }
 
 .options li {

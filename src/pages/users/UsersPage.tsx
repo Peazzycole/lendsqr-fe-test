@@ -15,7 +15,7 @@ import { User } from '../../utils/types'
 export default function UsersPage() {
   const { users, stats, isLoading } = useUsers();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [filters, setFilters] = useState({
     organization: '',
     username: '',
@@ -24,6 +24,7 @@ export default function UsersPage() {
     phoneNumber: '',
     status: '',
   });
+
   const [filteredUsers, setFilteredUsers] = useState<User[]>()
 
   const applyFilters = () => {
@@ -61,26 +62,29 @@ export default function UsersPage() {
         <DetailsCard icon={fileIcon} title="Users with loans" amount={stats.usersWithLoans} />
         <DetailsCard icon={moneyIcon} title="Users with savings" amount={stats.usersWithSavings} />
       </div>
-      <UsersTable
-        data={currentUsers}
-        filters={filters}
-        onFilterChange={(e) =>
-          setFilters((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-          }))
-        }
-        onFilterApply={() => {
-          setCurrentPage(1);
-          applyFilters();
-        }}
-      />
-      <Pagination
-        totalItems={result?.length}
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <div>
+        <UsersTable
+          data={currentUsers}
+          filters={filters}
+          onFilterChange={(e) =>
+            setFilters((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }))
+          }
+          onFilterApply={() => {
+            setCurrentPage(1);
+            applyFilters();
+          }}
+        />
+        <Pagination
+          totalItems={result?.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          setItemsPerPage={(val) => setItemsPerPage(val)}
+        />
+      </div>
     </div>
   );
 }

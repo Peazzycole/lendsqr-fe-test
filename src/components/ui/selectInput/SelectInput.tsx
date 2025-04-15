@@ -11,6 +11,7 @@ interface SelectInputProps {
     options: Option[];
     value: string;
     onChange: (value: string) => void;
+    direction?: "top" | "bottom"
 }
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -18,6 +19,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
     options,
     value,
     onChange,
+    direction
 }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -33,7 +35,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
                 <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
             </div>
             {isOpen && (
-                <ul className={styles.options}>
+                <ul className={`${styles.options} ${direction === 'top' && styles.top}`} >
                     {options.map((option) => (
                         <li key={option.value} onClick={() => handleSelect(option.value)}>
                             {option.label}

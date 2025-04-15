@@ -1,15 +1,23 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import styles from './Pagination.module.scss';
+import SelectInput from '../ui/selectInput/SelectInput';
 
 interface PaginationProps {
     totalItems: number;
     itemsPerPage: number;
+    setItemsPerPage: Dispatch<SetStateAction<number>>
     currentPage: number;
-    setCurrentPage: Dispatch<SetStateAction<number>>
+    setCurrentPage: (val: number) => void
 }
 
-const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, currentPage, setCurrentPage }) => {
-    // const [currentPage, setCurrentPage] = useState(1);
+const pageSizes = [
+    { label: '10', value: "10" },
+    { label: '30', value: "30" },
+    { label: '50', value: "50" },
+    { label: '100', value: "100" },
+]
+
+const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, currentPage, setCurrentPage, setItemsPerPage }) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const handlePageChange = (page: number) => {
@@ -81,12 +89,13 @@ const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, curre
         <div className={styles.paginationWrapper}>
             <div className={styles.selectWrapper}>
                 <span>Showing</span>
-                <select className={styles.select} value={itemsPerPage}>
-                    <option value={100}>10</option>
-                    <option value={100}>30</option>
-                    <option value={100}>50</option>
-                    <option value={100}>100</option>
-                </select>
+                <SelectInput
+                    placeholder="Select"
+                    options={pageSizes}
+                    value={itemsPerPage.toString()}
+                    onChange={(val) => setItemsPerPage(parseInt(val))}
+                    direction="top"
+                />
                 <span>out of {totalItems}</span>
             </div>
 
