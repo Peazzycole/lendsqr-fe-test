@@ -15,18 +15,17 @@
         flex: 1;
         width: 100%;
         padding: 60px;
-        height: calc(100vh - 98px);
+        height: 100vh;
         overflow-y: auto;
         background-color: #fbfbfb;
 
         @include breakpoint("lg") {
             padding: 40px;
-            height: auto;
+            min-height: 100vh;
         }
 
         @include breakpoint("md") {
             padding: 24px;
-            height: auto;
         }
     }
 }

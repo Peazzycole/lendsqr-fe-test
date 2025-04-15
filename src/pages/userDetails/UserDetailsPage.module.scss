@@ -1,6 +1,10 @@
 @use '../../assets/scss/variables' as *;
 @use '../../assets/scss/mixins' as *;
 
+.container {
+    padding-top: 96px;
+}
+
 .arrowBack {
     display: flex;
     align-items: center;

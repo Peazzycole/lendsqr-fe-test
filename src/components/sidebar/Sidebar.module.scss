@@ -5,11 +5,12 @@
     width: 100%;
     background-color: #fefefe;
     box-shadow: 0 5px 20px #0000000A;
-    height: calc(100vh - 96px);
+    height: 100vh;
     overflow-y: auto;
     padding-block: 39px;
     display: flex;
     flex-direction: column;
+    padding-top: 139px;
 
     // scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -24,6 +25,7 @@
 
     @include breakpoint('md') {
         scrollbar-width: none;
+        padding-top: 39px;
 
         &:hover {
             scrollbar-width: none;

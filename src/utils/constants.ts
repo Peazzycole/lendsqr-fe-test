@@ -121,3 +121,22 @@ export const sidebarMenus = [
         ]
     }
 ]
+
+export const UserStatus = [
+    {
+        label: 'Active',
+        value: 'active'
+    },
+    {
+        label: 'InActive',
+        value: 'inactive'
+    },
+    {
+        label: 'Blacklisted',
+        value: 'blacklisted'
+    },
+    {
+        label: 'Pending',
+        value: 'pending'
+    }
+]

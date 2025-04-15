@@ -39,6 +39,13 @@ export default function UserDetailsPage() {
         setUserDetails((prev) => prev ? { ...prev, status: 'inactive' } : prev);
     };
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }, [])
+
     return (
         userDetails && (<div className={styles.container}>
             <div className={styles.arrowBack} onClick={() => navigate(-1)}>

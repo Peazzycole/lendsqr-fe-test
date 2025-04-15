@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import styles from './ActionMenu.module.scss';
 
 import eyeIcon from '../../../assets/eye.svg'
@@ -11,16 +10,10 @@ import { saveUserDetails } from '../../../services/storage';
 
 interface ActionMenuProps {
     onClose: () => void;
-    position: {
-        top: number
-        left: number
-    }
     userId: string
 }
 
-
-
-export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, position, userId }) => {
+export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId }) => {
     const { users } = useUsers()
     const navigate = useNavigate()
 
@@ -41,14 +34,10 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, position, userI
         onClose();
     };
 
-    const menuContent = (
+    return (
         <div
             className={styles.menuContainer}
-            style={{
-                position: "absolute",
-                top: position.top,
-                left: position.left - 100
-            }}>
+        >
             <div className={styles.menuItem} onClick={handleViewDetails}>
                 <img src={eyeIcon} alt="" />
                 View Details
@@ -64,5 +53,4 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, position, userI
         </div>
     );
 
-    return ReactDOM.createPortal(menuContent, document.getElementById('portal-root')!);
 };

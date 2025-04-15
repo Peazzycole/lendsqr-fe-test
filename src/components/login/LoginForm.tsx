@@ -25,12 +25,14 @@ export default function LoginForm() {
                         label="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        animatePlaceholder={true}
                     />
                     <InputField
                         type="password"
                         label="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        animatePlaceholder={true}
                     />
                     <p>Forgot Password?</p>
                 </div>

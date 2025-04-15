@@ -16,6 +16,10 @@ interface UsersContextProps {
         usersWithLoans: number;
         usersWithSavings: number;
     };
+    uniqueOrganizations: Array<{
+        label: string
+        value: string
+    }>
 }
 
 const UsersContext = createContext<UsersContextProps | undefined>(undefined);
@@ -73,6 +77,12 @@ export const UsersProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return { totalUsers, activeUsers, usersWithLoans, usersWithSavings };
     }, [users]);
 
+    const uniqueOrganizations = useMemo(() => {
+        const organizations = users.map((user) => user.organization);
+        const uniqueOrgs = Array.from(new Set(organizations)); // Get unique organizations
+        return uniqueOrgs.map((org) => ({ label: org, value: org })); // Format as {label, value}
+    }, [users]);
+
     return (
         <UsersContext.Provider
             value={{
@@ -83,6 +93,7 @@ export const UsersProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 blacklistUser,
                 deactivateUser,
                 stats,
+                uniqueOrganizations
             }}
         >
             {children}
