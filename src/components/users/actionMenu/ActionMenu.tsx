@@ -11,10 +11,11 @@ import { saveUserDetails } from '../../../services/storage';
 interface ActionMenuProps {
     onClose: () => void;
     userId: string
+    status: string
 }
 
-export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId }) => {
-    const { users } = useUsers()
+export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId, status }) => {
+    const { users, deactivateUser, activateUser, blacklistUser } = useUsers()
     const navigate = useNavigate()
 
     const handleViewDetails = () => {
@@ -25,12 +26,17 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId }) => {
     };
 
     const handleBlacklistUser = () => {
-        console.log('Blacklist User');
+        blacklistUser(userId)
         onClose();
     };
 
     const handleActivateUser = () => {
-        console.log('Activate User');
+        activateUser(userId)
+        onClose();
+    };
+
+    const handleDeactivateUser = () => {
+        deactivateUser(userId)
         onClose();
     };
 
@@ -42,14 +48,18 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId }) => {
                 <img src={eyeIcon} alt="" />
                 View Details
             </div>
-            <div className={styles.menuItem} onClick={handleBlacklistUser}>
+            {(status !== 'blacklisted') && <div className={styles.menuItem} onClick={handleBlacklistUser}>
                 <img src={userIcon} alt="" />
                 Blacklist User
-            </div>
-            <div className={styles.menuItem} onClick={handleActivateUser}>
+            </div>}
+            {status !== 'active' && <div className={styles.menuItem} onClick={handleActivateUser}>
                 <img src={userDeletecon} alt="" />
                 Activate User
-            </div>
+            </div>}
+            {status === 'active' && <div className={styles.menuItem} onClick={handleDeactivateUser}>
+                <img src={userDeletecon} alt="" />
+                Deactivate User
+            </div>}
         </div>
     );
 

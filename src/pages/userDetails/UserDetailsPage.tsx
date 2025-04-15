@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 import { User } from '../../utils/types'
 import { getUserDetails } from '../../services/storage'
 import { useUsers } from '../../context/UsersContext'
-import { ToastContainer } from 'react-toastify'
 
 export default function UserDetailsPage() {
     const navigate = useNavigate()
@@ -47,58 +46,53 @@ export default function UserDetailsPage() {
     }, [])
 
     return (
-        userDetails && (<div className={styles.container}>
-            <div className={styles.arrowBack} onClick={() => navigate(-1)}>
-                <img src={arrowBackIcon} alt="" />
-                <span>Back to Users</span>
-            </div>
-            <div className={styles.headerTextAndButtonContainer}>
-                <h1>User Details</h1>
-                {(userDetails.status === 'inactive' || userDetails.status === 'pending') && <div>
-                    <button
-                        className={styles.danger}
-                        onClick={() => handleBlacklistUser(userDetails.id)}
-                    >
-                        Blacklist User
-                    </button>
-                    <button onClick={() => handleActivateUser(userDetails.id)}>
-                        Activate User
-                    </button>
-                </div>}
-                {userDetails.status === 'active' && <div>
-                    <button
-                        className={styles.danger}
-                        onClick={() => handleBlacklistUser(userDetails.id)}
-                    >
-                        Blacklist User
-                    </button>
-                    <button onClick={() => handleDeactivateUser(userDetails.id)}>
-                        Deactivate User
-                    </button>
-                </div>}
-                {userDetails.status === 'blacklisted' && <div>
-                    <button onClick={() => handleActivateUser(userDetails.id)}>
-                        Activate User
-                    </button>
-                </div>}
-            </div>
+        userDetails && (
+            <div className={styles.container}>
+                <div className={styles.arrowBack} onClick={() => navigate(-1)}>
+                    <img src={arrowBackIcon} alt="" />
+                    <span>Back to Users</span>
+                </div>
+                <div className={styles.headerTextAndButtonContainer}>
+                    <h1>User Details</h1>
+                    {(userDetails.status === 'inactive' || userDetails.status === 'pending') && <div>
+                        <button
+                            className={styles.danger}
+                            onClick={() => handleBlacklistUser(userDetails.id)}
+                        >
+                            Blacklist User
+                        </button>
+                        <button onClick={() => handleActivateUser(userDetails.id)}>
+                            Activate User
+                        </button>
+                    </div>}
+                    {userDetails.status === 'active' && <div>
+                        <button
+                            className={styles.danger}
+                            onClick={() => handleBlacklistUser(userDetails.id)}
+                        >
+                            Blacklist User
+                        </button>
+                        <button onClick={() => handleDeactivateUser(userDetails.id)}>
+                            Deactivate User
+                        </button>
+                    </div>}
+                    {userDetails.status === 'blacklisted' && <div>
+                        <button onClick={() => handleActivateUser(userDetails.id)}>
+                            Activate User
+                        </button>
+                    </div>}
+                </div>
 
-            <DetailsHeader
-                fullName={userDetails.fullName}
-                bankId={userDetails.bankId}
-                tier={userDetails.tier}
-                balance={userDetails.balance}
-                accountNumber={userDetails.accountNumber}
-                bank={userDetails.bank}
-            />
-            <DetailsContent userDetails={userDetails} />
-            <ToastContainer
-                position='top-center'
-                theme='colored' autoClose={2000}
-                toastStyle={{
-                    backgroundColor: '#39CDCC',
-                }}
-            />
-        </div>)
+                <DetailsHeader
+                    fullName={userDetails.fullName}
+                    bankId={userDetails.bankId}
+                    tier={userDetails.tier}
+                    balance={userDetails.balance}
+                    accountNumber={userDetails.accountNumber}
+                    bank={userDetails.bank}
+                />
+                <DetailsContent userDetails={userDetails} />
+            </div>
+        )
     )
 }

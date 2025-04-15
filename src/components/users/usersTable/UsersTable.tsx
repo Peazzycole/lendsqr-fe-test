@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './UsersTable.module.scss';
 
 // Sample icons (you can replace them with your own icons or an icon library)
@@ -34,7 +34,8 @@ export const UsersTable: React.FC<UsersTable> = ({
     const [showFilter, setShowFilter] = useState<boolean>(false);
     const [actionMenuOpen, setActionMenuOpen] = useState<string | null>(null);
 
-    const handleToggleFilter = () => {
+    const handleToggleFilter = (e: React.MouseEvent<HTMLSpanElement>) => {
+        e.stopPropagation()
         setShowFilter(!showFilter);
     };
 
@@ -49,6 +50,21 @@ export const UsersTable: React.FC<UsersTable> = ({
     const closeActionMenu = () => {
         setActionMenuOpen(null);
     };
+
+    const handleClickOutside = (event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        if (!target.closest('.filter-menu')) {
+            setActionMenuOpen(null);
+            setShowFilter(false)
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -118,7 +134,10 @@ export const UsersTable: React.FC<UsersTable> = ({
                             <div className={styles.dataItem}>
                                 <button
                                     className={styles.actionButton}
-                                    onClick={() => handleToggleActionMenu(user.id.toString())}
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleToggleActionMenu(user.id.toString())
+                                    }}
                                 >
                                     <img src={menuIcon} alt="" />
                                 </button>
@@ -126,6 +145,7 @@ export const UsersTable: React.FC<UsersTable> = ({
                                     <ActionMenu
                                         onClose={closeActionMenu}
                                         userId={user.id}
+                                        status={user.status}
                                     />
                                 )}
                             </div>
@@ -134,12 +154,15 @@ export const UsersTable: React.FC<UsersTable> = ({
                     </div>
                 ))}
                 {showFilter && (
-                    <FilterPanel
-                        values={filters}
-                        onChange={onFilterChange}
-                        onFilter={onFilterApply}
-                        onClose={() => setShowFilter(false)}
-                    />
+                    <div className='filter-menu'>
+
+                        <FilterPanel
+                            values={filters}
+                            onChange={onFilterChange}
+                            onFilter={onFilterApply}
+                            onClose={() => setShowFilter(false)}
+                        />
+                    </div>
                 )}
             </div>
         </div>

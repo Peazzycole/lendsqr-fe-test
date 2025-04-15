@@ -7,10 +7,9 @@ import fileIcon from '../../assets/file.png'
 import moneyIcon from '../../assets/money.png'
 import { UsersTable } from '../../components/users/usersTable/UsersTable'
 import Pagination from '../../components/pagination/Pagination'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useUsers } from '../../context/UsersContext'
 import Loading from '../../components/loading/Loading'
-import { User } from '../../utils/types'
 
 export default function UsersPage() {
   const { users, stats, isLoading } = useUsers();
@@ -24,11 +23,12 @@ export default function UsersPage() {
     phoneNumber: '',
     status: '',
   });
+  const [tempFilters, setTempFilters] = useState({ ...filters })
 
-  const [filteredUsers, setFilteredUsers] = useState<User[]>()
+  // const [filteredUsers, setFilteredUsers] = useState<User[]>()
 
-  const applyFilters = () => {
-    setFilteredUsers(users.filter((user) => {
+  const filteredUsers = useMemo(() => {
+    return users.filter((user) => {
       return (
         (!filters.organization || user.organization === filters.organization) &&
         (!filters.username || user.username.toLowerCase().includes(filters.username.toLowerCase())) &&
@@ -37,10 +37,10 @@ export default function UsersPage() {
         (!filters.phoneNumber || user.phoneNumber.includes(filters.phoneNumber)) &&
         (!filters.status || user.status === filters.status)
       );
-    }));
-  };
+    });
+  }, [users, filters]);
 
-  const result = filteredUsers || users;
+  const result = filteredUsers;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentUsers = result.slice(indexOfFirstItem, indexOfLastItem);
@@ -65,16 +65,16 @@ export default function UsersPage() {
       <div>
         <UsersTable
           data={currentUsers}
-          filters={filters}
+          filters={tempFilters}
           onFilterChange={(e) =>
-            setFilters((prev) => ({
+            setTempFilters((prev) => ({
               ...prev,
               [e.target.name]: e.target.value,
             }))
           }
           onFilterApply={() => {
             setCurrentPage(1);
-            applyFilters();
+            setFilters(tempFilters)
           }}
         />
         <Pagination

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import styles from './Layout.module.scss'
+import { ToastContainer } from "react-toastify";
 
 export default function Layout() {
     return (
@@ -13,6 +14,13 @@ export default function Layout() {
                 </div>
                 <div className={styles.outlet}>
                     <Outlet />
+                    <ToastContainer
+                        position='top-center'
+                        theme='colored' autoClose={2000}
+                        toastStyle={{
+                            backgroundColor: '#39CDCC',
+                        }}
+                    />
                 </div>
             </div>
         </div>

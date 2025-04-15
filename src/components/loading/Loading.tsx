@@ -5,7 +5,7 @@ export default function Loading() {
         <Lottie
             animationData={squareLoader}
             loop
-            style={{ height: '300px', width: '300px', marginBottom: '12rem' }}
+            style={{ height: '300px', width: '300px' }}
         />
     )
 }
