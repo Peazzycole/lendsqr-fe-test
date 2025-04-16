@@ -25,17 +25,17 @@ interface UsersTable {
     onFilterApply: () => void;
 }
 
-export const UsersTable: React.FC<UsersTable> = ({
+export default function UsersTable({
     data,
     filters,
     onFilterChange,
     onFilterApply
-}) => {
+}: UsersTable) {
+
     const [showFilter, setShowFilter] = useState<boolean>(false);
     const [actionMenuOpen, setActionMenuOpen] = useState<string | null>(null);
 
-    const handleToggleFilter = (e: React.MouseEvent<HTMLSpanElement>) => {
-        e.stopPropagation()
+    const handleToggleFilter = () => {
         setShowFilter(!showFilter);
     };
 
@@ -53,9 +53,8 @@ export const UsersTable: React.FC<UsersTable> = ({
 
     const handleClickOutside = (event: MouseEvent) => {
         const target = event.target as HTMLElement;
-        if (!target.closest('.filter-menu')) {
+        if (!target.closest('.dropdown-menu')) {
             setActionMenuOpen(null);
-            setShowFilter(false)
         }
     };
 
@@ -154,8 +153,7 @@ export const UsersTable: React.FC<UsersTable> = ({
                     </div>
                 ))}
                 {showFilter && (
-                    <div className='filter-menu'>
-
+                    <div>
                         <FilterPanel
                             values={filters}
                             onChange={onFilterChange}

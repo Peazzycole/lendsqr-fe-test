@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component snapshot: matches the layout structure 1`] = `
+<div>
+  <div>
+    <div
+      data-testid="navbar"
+    />
+    <div
+      class="sidebarAndOutletLayout"
+    >
+      <div
+        class="sidebar"
+      >
+        <div
+          data-testid="sidebar"
+        />
+      </div>
+      <div
+        class="outlet"
+      >
+        <section
+          aria-atomic="false"
+          aria-label="Notifications Alt+T"
+          aria-live="polite"
+          aria-relevant="additions text"
+          class="Toastify"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

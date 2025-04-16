@@ -93,7 +93,10 @@ const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, curre
                     placeholder="Select"
                     options={pageSizes}
                     value={itemsPerPage.toString()}
-                    onChange={(val) => setItemsPerPage(parseInt(val))}
+                    onChange={(val) => {
+                        setItemsPerPage(parseInt(val))
+                        setCurrentPage(1)
+                    }}
                     direction="top"
                 />
                 <span>out of {totalItems}</span>

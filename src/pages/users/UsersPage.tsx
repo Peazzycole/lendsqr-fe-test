@@ -5,11 +5,11 @@ import personIcon from '../../assets/persons.png'
 import peopleIcon from '../../assets/people.png'
 import fileIcon from '../../assets/file.png'
 import moneyIcon from '../../assets/money.png'
-import { UsersTable } from '../../components/users/usersTable/UsersTable'
 import Pagination from '../../components/pagination/Pagination'
 import { useMemo, useState } from 'react'
 import { useUsers } from '../../context/UsersContext'
 import Loading from '../../components/loading/Loading'
+import UsersTable from '../../components/users/usersTable/UsersTable'
 
 export default function UsersPage() {
   const { users, stats, isLoading } = useUsers();
@@ -24,8 +24,6 @@ export default function UsersPage() {
     status: '',
   });
   const [tempFilters, setTempFilters] = useState({ ...filters })
-
-  // const [filteredUsers, setFilteredUsers] = useState<User[]>()
 
   const filteredUsers = useMemo(() => {
     return users.filter((user) => {
@@ -55,7 +53,7 @@ export default function UsersPage() {
 
   return (
     <div className={styles.userContainer}>
-      <h1 className={styles.title}>Users</h1>
+      <h1 role="heading" className={styles.title}>Users</h1>
       <div className={styles.cardContainer}>
         <DetailsCard icon={personIcon} title="Users" amount={stats.totalUsers} />
         <DetailsCard icon={peopleIcon} title="Active Users" amount={stats.activeUsers} />
