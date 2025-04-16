@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import UsersTable from '../../src/components/users/usersTable/UsersTable';
 import '@testing-library/jest-dom';

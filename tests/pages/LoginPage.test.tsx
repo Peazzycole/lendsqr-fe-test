@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import LoginPage from '../../src/pages/login/LoginPage';
 import '@testing-library/jest-dom';

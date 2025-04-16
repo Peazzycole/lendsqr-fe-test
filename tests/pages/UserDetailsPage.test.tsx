@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserDetailsPage from '../../src/pages/userDetails/UserDetailsPage';
 import { useNavigate } from 'react-router-dom';

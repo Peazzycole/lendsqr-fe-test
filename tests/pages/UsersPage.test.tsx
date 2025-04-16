@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import UsersPage from '../../src/pages/users/UsersPage';
 import { useUsers } from '../../src/context/UsersContext';
