@@ -3,7 +3,6 @@
 The **LendSqr Frontend Test** This project replicates core screens from the LendSqr Admin Console: Login, Dashboard, Users List, and User Details. Built with React, TypeScript, and SCSS modules, the app demonstrates pixel‑perfect visual fidelity to the provided Figma designs, responsive layouts, client‑side pagination & filtering of a 500‑record mock API, and unit testing with Jest & React Testing Library.
 
 **Live Demo:** https://peace-oghenevwefe-lendsqr-fe-test.vercel.app/login  
-**Project Workthrough:** https://www.loom.com/share/ed75e408dd924a4c93140838e675c5f5
 
 ### Key Features:
 - Pixel‑perfect Login, Dashboard, Users List & User Details pages  
