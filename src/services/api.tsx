@@ -11,7 +11,7 @@ const apiClient = axios.create({
 
 export const fetchAllUsers = async () => {
     try {
-        const response = await apiClient.get('/8c4bd71f-8cd4-4abb-a379-c9eec29e3e16');
+        const response = await apiClient.get('/fef86b13-9e2f-4e2d-b3ff-965db5e46c53');
         return response.data;
     } catch (error) {
         console.error('Error fetching users:', error);

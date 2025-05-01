@@ -12,7 +12,7 @@ describe('fetchAllUsers', () => {
 
         const result = await fetchAllUsers();
         expect(result).toEqual(mockData);
-        expect(apiClient.get).toHaveBeenCalledWith('/8c4bd71f-8cd4-4abb-a379-c9eec29e3e16');
+        expect(apiClient.get).toHaveBeenCalledWith('/fef86b13-9e2f-4e2d-b3ff-965db5e46c53');
     });
 
     test('throws error and logs it on failure', async () => {
@@ -22,7 +22,7 @@ describe('fetchAllUsers', () => {
 
         await expect(fetchAllUsers()).rejects.toThrow(mockError);
         expect(consoleSpy).toHaveBeenCalledWith('Error fetching users:', mockError);
-        expect(apiClient.get).toHaveBeenCalledWith('/8c4bd71f-8cd4-4abb-a379-c9eec29e3e16');
+        expect(apiClient.get).toHaveBeenCalledWith('/fef86b13-9e2f-4e2d-b3ff-965db5e46c53');
 
         consoleSpy.mockRestore();
     });
