@@ -1,0 +1,78 @@
+@use '../../../../../styles/abstracts/variables' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+
+.formContainer {
+    flex: 1;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .logo {
+        display: none;
+
+
+        @include breakpoint("xl") {
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-top: $space-3xl;
+            // padding-inline: $space-lg;
+
+        }
+    }
+
+    @include breakpoint("xl") {
+        justify-content: start;
+        align-items: center;
+        padding-inline: $space-lg;
+    }
+
+    .login {
+        display: flex;
+        flex-direction: column;
+        margin-left: 100px;
+        max-width: 447px;
+        width: 100%;
+
+        @include breakpoint("xl") {
+            margin-left: 0;
+            margin-top: 150px;
+            margin-bottom: 100px;
+        }
+
+        h1 {
+            color: $text-secondary-color;
+            font-size: $text-5xl;
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: -4%;
+        }
+
+        h2 {
+            margin-top: 10px;
+            margin-bottom: 60px;
+            color: $text-primary-color;
+            font-weight: normal;
+            font-size: $text-xl;
+            line-height: 100%;
+        }
+
+        .inputWrapper {
+            display: flex;
+            flex-direction: column;
+            gap: $space-lg;
+            margin-bottom: 30px;
+
+            p {
+                color: $secondary-color;
+                font-size: $text-sm;
+                font-weight: 600;
+                line-height: 100%;
+                text-transform: uppercase;
+                letter-spacing: 10%;
+            }
+        }
+    }
+}

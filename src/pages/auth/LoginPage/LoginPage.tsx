@@ -1,6 +1,12 @@
+import LoginIllustration from '@/components/features/Auth/Login/LoginIllustration/LoginIllustration'
+import styles from './LoginPage.module.scss'
+import LoginForm from '@/components/features/Auth/Login/LoginForm/LoginForm'
 
 export default function LoginPage() {
     return (
-        <div>LoginPage</div>
+        <main className={styles.loginContainer}>
+            <LoginIllustration />
+            <LoginForm />
+        </main>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './SelectInput.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 type Option = { label: string; value: string };
 
@@ -31,7 +30,7 @@ const SelectInput: React.FC<SelectInputProps> = ({
         <div className={styles.selectWrapper}>
             <div className={styles.selectBox} onClick={() => setIsOpen(!isOpen)}>
                 <span>{value || placeholder}</span>
-                <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
+                {isOpen ? <ChevronUp /> : <ChevronDown />}
             </div>
             {isOpen && (
                 <ul className={`${styles.options} ${direction === 'top' && styles.top}`} >

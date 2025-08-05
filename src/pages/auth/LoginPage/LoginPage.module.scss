@@ -1,0 +1,8 @@
+@use '../../../styles/abstracts/mixins' as *;
+
+.loginContainer {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+}

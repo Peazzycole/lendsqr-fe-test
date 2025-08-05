@@ -6,8 +6,10 @@ import arrowDown from '../../../assets/images/down-button.svg';
 import dashboard from '../../../assets/images/home.svg';
 import logoutIcon from '../../../assets/images/sign-out.svg'
 
-import { SIDEBAR_MENUS } from '@/utils';
+import { ROUTES, SIDEBAR_MENUS } from '@/utils';
 import { X } from 'lucide-react';
+import { useAuthStore } from '@/store/auth.store';
+import { useNavigate } from 'react-router-dom';
 
 type SidebarProps = {
     height?: string
@@ -16,6 +18,14 @@ type SidebarProps = {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
+    const { setIsAuthenticated } = useAuthStore()
+    const navigate = useNavigate()
+
+    const logoutHandler = () => {
+        setIsAuthenticated(false)
+        navigate(ROUTES.LOGIN)
+    }
+
 
     return (
         <aside className={styles.sidebar} style={{ height, boxShadow }}>
@@ -57,7 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
                 </div>
             </div>
             {/* Customers */}
-            <div className={styles.logout}>
+            <div className={styles.logout} onClick={logoutHandler}>
                 <img src={logoutIcon} alt="" />
                 <span>Logout</span>
             </div>

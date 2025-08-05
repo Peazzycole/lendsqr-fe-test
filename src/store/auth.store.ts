@@ -6,6 +6,6 @@ interface AuthStoreState {
 }
 
 export const useAuthStore = create<AuthStoreState>((set) => ({
-  isAuthenticated: true,
+  isAuthenticated: false,
   setIsAuthenticated: (val: boolean) => set({ isAuthenticated: val }),
 }));
