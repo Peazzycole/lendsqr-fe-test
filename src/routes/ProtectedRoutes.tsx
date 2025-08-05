@@ -1,4 +1,4 @@
-import AuthLayout from '@/components/layout/AuthLayout';
+import AuthLayout from '@/components/layout/AuthLayout/AuthLayout';
 import DashboardPage from '@/pages/dashboard/DashboardPage';
 import UserDetailsPage from '@/pages/users/UserDetailsPage/UserDetailsPage';
 import UsersPage from '@/pages/users/UsersPage/UsersPage';

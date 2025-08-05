@@ -1,0 +1,206 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 30px;
+    background-color: #fff;
+    box-shadow: 3px 0px 20px #0000000A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+
+    @include breakpoint("md") {
+        padding: 16px
+    }
+
+}
+
+.logoAndSearchContainer {
+    display: flex;
+    align-items: center;
+    gap: 168.2px;
+
+    @include breakpoint("xl") {
+        gap: 32px
+    }
+
+    @include breakpoint("lg") {
+        gap: 16px
+    }
+
+    .logo {
+        img {
+            height: 30px;
+            width: 144.8px;
+        }
+
+        @include breakpoint("md") {
+            display: none;
+        }
+    }
+
+    .hamburger {
+        display: none;
+
+        @include breakpoint("md") {
+            display: block;
+        }
+    }
+
+    .inputContainer {
+        display: flex;
+        align-items: 'center';
+
+        input {
+            width: 344px;
+            height: 40px;
+            padding-left: $space-md;
+            padding-right: $space-md;
+            font-size: $text-md;
+            border: 1px solid #545F7D26;
+            border-radius: $radius-md 0 0 $radius-md;
+            outline: none;
+            transition: border-color 0.2s ease;
+
+            @include breakpoint("lg") {
+                width: 220px;
+            }
+
+            @include breakpoint("md") {
+                width: 200px;
+            }
+
+            @include breakpoint("sm") {
+                width: 120px;
+            }
+
+            &:focus {
+                border-color: $secondary-color;
+            }
+        }
+
+        button {
+            height: 40px;
+            width: 56px;
+            background-color: $secondary-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0 $radius-md $radius-md 0;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: #34b6b6;
+            }
+
+            img {
+                width: 14px;
+                height: 14px;
+            }
+        }
+    }
+
+}
+
+
+.navRight {
+    display: flex;
+    align-items: center;
+}
+
+.navLink {
+    text-decoration: underline solid;
+    color: $text-secondary-color;
+    font-size: 16px;
+    margin-right: 47px;
+    line-height: 100%;
+    font-weight: normal;
+
+    @include breakpoint("sm") {
+        display: none;
+    }
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    color: $text-secondary-color;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.avatar {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.bellIcon {
+    cursor: pointer;
+
+    @include breakpoint("sm") {
+        display: none;
+    }
+}
+
+.userName {
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.dropdownArrow {
+    font-size: 10px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-height: 100vh;
+    overflow: auto;
+    width: 80%;
+    background-color: #fff;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 5001;
+
+    @include breakpoint("md") {
+        display: block;
+    }
+
+    &.open {
+        transform: translateX(0);
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @include breakpoint("md") {
+        display: block;
+    }
+}

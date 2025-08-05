@@ -1,0 +1,154 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.sidebar {
+    width: 100%;
+    background-color: #fefefe;
+    box-shadow: 0 5px 20px #0000000A;
+    height: 100vh;
+    overflow-y: auto;
+    padding-block: 39px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 139px;
+
+    // scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 0
+    }
+
+    &:hover {
+        &::-webkit-scrollbar {
+            width: 3px;
+        }
+    }
+
+    @include breakpoint('md') {
+        scrollbar-width: none;
+        padding-top: 39px;
+
+        &:hover {
+            scrollbar-width: none;
+        }
+    }
+
+}
+
+.sidebarContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.switchOrg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: $text-md;
+    color: $text-secondary-color;
+    cursor: pointer;
+    padding-left: 30px;
+    margin-bottom: 40px;
+}
+
+.dashboard {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-left: 30px;
+    opacity: 0.6;
+    height: 40px;
+    margin-bottom: 30px;
+
+    span {
+        color: $text-secondary-color;
+        font-weight: 400;
+        font-size: $text-md;
+        line-height: 100%;
+        cursor: pointer;
+
+        &:hover {
+            color: #00c4b4;
+        }
+    }
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.section {
+    h3 {
+        font-size: $text-xs;
+        font-weight: 500;
+        color: $text-primary-color;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        margin-left: 30px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            width: 100%;
+            font-size: $text-md;
+            color: #213f7d;
+            cursor: pointer;
+            padding-left: 30px;
+            opacity: 0.6;
+
+            &:hover {
+                color: #00c4b4;
+            }
+        }
+
+        .selected {
+            background-color: #39CDCC06;
+            border-left: 3px solid $secondary-color;
+            padding-left: 27px;
+            opacity: 1;
+        }
+
+    }
+}
+
+.logout {
+    padding-left: 30px;
+    padding-top: 20px;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: $text-md;
+    color: $text-secondary-color;
+    cursor: pointer;
+    border-top: 1px solid #213F7D10;
+    width: 100%;
+}
+
+.mobileNavLogoContainer {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 24px;
+    padding-bottom: 40px;
+
+    div {
+        cursor: pointer;
+    }
+
+    @include breakpoint('md') {
+        display: flex;
+    }
+}

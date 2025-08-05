@@ -1,0 +1,31 @@
+@use '../../../styles/abstracts/mixins' as *;
+
+.sidebarAndOutletLayout {
+    display: flex;
+
+    .sidebar {
+        width: 283px;
+
+        @include breakpoint("lg") {
+            display: none;
+        }
+    }
+
+    .outlet {
+        flex: 1;
+        width: 100%;
+        padding: 60px;
+        height: 100vh;
+        overflow-y: auto;
+        background-color: #fbfbfb;
+
+        @include breakpoint("lg") {
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        @include breakpoint("md") {
+            padding: 24px;
+        }
+    }
+}
