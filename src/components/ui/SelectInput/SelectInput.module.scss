@@ -1,0 +1,55 @@
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #545F7D;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.selectBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.75rem;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #545F7D20;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #21334F;
+    gap: 10px
+}
+
+.options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 4px;
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+
+
+}
+
+.top {
+    bottom: 105%;
+    top: auto
+}
+
+.options li {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.options li:hover {
+    background-color: #39CDCC10;
+}

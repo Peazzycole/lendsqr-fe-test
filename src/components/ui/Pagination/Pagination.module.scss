@@ -1,0 +1,84 @@
+@use '../../../styles/abstracts/mixins' as *;
+
+.paginationWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #545f7d;
+
+    @include breakpoint("sm") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px
+    }
+}
+
+.selectWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+        color: #545f7d;
+    }
+}
+
+.select {
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    background: #f5f6fa;
+    color: #545f7d;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.pageControls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include breakpoint("sm") {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+.pageBtn {
+    border: none;
+    background: transparent;
+    color: #545f7d;
+    padding: 0.3rem 0.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: #f0f0f5;
+    }
+}
+
+.active {
+    background-color: #545f7d;
+    color: white;
+    border-radius: 4px;
+}
+
+.arrowBtn {
+    background-color: #f0f0f5;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #545f7d;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+}

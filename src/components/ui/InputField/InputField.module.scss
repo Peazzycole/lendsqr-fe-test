@@ -1,0 +1,94 @@
+@use '../../../styles/abstracts/variables' as *;
+
+.inputContainer {
+    position: relative;
+}
+
+.label {
+    display: block;
+    position: relative;
+}
+
+.errorField {
+    border: 1px solid red !important;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+    padding-left: $space-md;
+    padding-right: $space-md;
+    font-size: $text-md;
+    border: 1px solid #545F7D26;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.input[type="password"] {
+    padding-right: 60px;
+}
+
+.input:focus {
+    border-color: $secondary-color;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 100%;
+    flex: 1
+}
+
+.placeholder {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    color: $text-primary-color;
+    font-size: $text-sm;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    transform: translateY(-50%);
+}
+
+.defaultPlaceholder {
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.input:not(:placeholder-shown)+.defaultPlaceholder {
+    display: none;
+}
+
+.animateInputPlaceholder:focus+.placeholder,
+.animateInputPlaceholder:not(:placeholder-shown)+.placeholder {
+    top: 0;
+    left: 12px;
+    font-size: $text-xs;
+    background: white;
+    padding: 0 4px;
+}
+
+
+.toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $secondary-color;
+    font-weight: 600;
+    font-size: $text-xs;
+    cursor: pointer;
+    user-select: none;
+}
