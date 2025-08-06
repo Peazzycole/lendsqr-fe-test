@@ -22,13 +22,11 @@ const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
     const { setIsAuthenticated } = useAuthStore()
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location.pathname)
 
     const logoutHandler = () => {
         setIsAuthenticated(false)
         navigate(ROUTES.LOGIN)
     }
-
 
     return (
         <aside className={styles.sidebar} style={{ height, boxShadow }}>
