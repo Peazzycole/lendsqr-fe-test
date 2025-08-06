@@ -6,6 +6,8 @@ import menuIcon from '@assets/images/menu.svg'
 // import { ActionMenu } from '../actionMenu/ActionMenu';
 import type { UserDto } from '@/types/user.types';
 import { formatDate } from '@/utils';
+import { ActionMenu } from './components/ActionMenu/ActionMenu';
+import FilterPanel from './components/FilterPanel/FilterPanel';
 
 interface FilterValues {
     organization: string;
@@ -21,13 +23,15 @@ interface UsersTable {
     filters: FilterValues
     onFilterChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     onFilterApply: () => void;
+    clearFilters: () => void
 }
 
 export default function UsersTable({
     data,
     filters,
     onFilterChange,
-    onFilterApply
+    onFilterApply,
+    clearFilters
 }: UsersTable) {
 
     const [showFilter, setShowFilter] = useState<boolean>(false);
@@ -138,28 +142,29 @@ export default function UsersTable({
                                 >
                                     <img src={menuIcon} alt="" />
                                 </button>
-                                {/* {actionMenuOpen === user.id.toString() && (
+                                {actionMenuOpen === user.id.toString() && (
                                     <ActionMenu
                                         onClose={closeActionMenu}
                                         userId={user.id}
                                         status={user.status}
                                     />
-                                )} */}
+                                )}
                             </div>
                         </div>
 
                     </div>
                 ))}
-                {/* {showFilter && (
+                {showFilter && (
                     <div>
                         <FilterPanel
                             values={filters}
                             onChange={onFilterChange}
                             onFilter={onFilterApply}
                             onClose={() => setShowFilter(false)}
+                            onReset={clearFilters}
                         />
                     </div>
-                )} */}
+                )}
             </div>
         </div>
     );

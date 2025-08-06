@@ -1,5 +1,4 @@
 import React from 'react'
-import { useUsers } from '@hooks/useUsers'
 import styles from './UsersPage.module.scss'
 
 import personIcon from '@assets/images/persons.svg'
@@ -10,29 +9,16 @@ import Loading from '@/components/ui/Loading/Loading'
 import DetailsCard from '@/components/features/Users/Users/DetailsCard/DetailsCard'
 import Pagination from '@/components/ui/Pagination/Pagination'
 import UsersTable from '@/components/features/Users/Users/UsersTable/UsersTable'
+import { useFetchUsers } from '@/hooks/useFetchUsers'
+import { useUsersStore } from '@/store/users.store'
+import { useUserFilters } from '@/hooks/useUsersFilters'
+import { usePagination } from '@/hooks/usePagination'
 
 const UsersPage: React.FC = () => {
-    const {
-        // Data
-        currentUsers,
-        stats,
-
-        // Loading states
-        isLoading,
-        isError,
-
-        // Filters & Pagination
-        tempFilters,
-        currentPage,
-        itemsPerPage,
-        filteredUsers,
-
-        // Actions
-        setTempFilters,
-        applyFilters,
-        setCurrentPage,
-        setItemsPerPage,
-    } = useUsers()
+    const { isLoading } = useFetchUsers()
+    const { stats } = useUsersStore()
+    const { setTempFilters, applyFilters, tempFilters, clearFilters, filteredUsers } = useUserFilters()
+    const { currentPage, itemsPerPage, setCurrentPage, setItemsPerPage, currentItems } = usePagination(filteredUsers)
 
     // Handle filter change
     const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -42,8 +28,7 @@ const UsersPage: React.FC = () => {
         })
     }
 
-    // Loading state
-    if (isLoading || isError) {
+    if (isLoading) {
         return (
             <div className={styles.loadingContainer}>
                 <Loading />
@@ -84,10 +69,11 @@ const UsersPage: React.FC = () => {
             {/* Users Table */}
             <div>
                 <UsersTable
-                    data={currentUsers}
+                    data={currentItems}
                     filters={tempFilters}
                     onFilterChange={handleFilterChange}
                     onFilterApply={applyFilters}
+                    clearFilters={clearFilters}
                 />
 
                 {/* Pagination */}

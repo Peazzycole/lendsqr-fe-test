@@ -29,6 +29,25 @@ export const ROUTES = {
 
 export const BASE_URL = "https://mock-api.net/api/lendsqr";
 
+export const USERS_STATUS = [
+  {
+    label: "Active",
+    value: "active",
+  },
+  {
+    label: "InActive",
+    value: "inactive",
+  },
+  {
+    label: "Blacklisted",
+    value: "blacklisted",
+  },
+  {
+    label: "Pending",
+    value: "pending",
+  },
+];
+
 export const SIDEBAR_MENUS = [
   {
     name: "Customers",
