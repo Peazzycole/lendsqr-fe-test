@@ -113,14 +113,14 @@
             }
         }
 
-        .selected {
-            background-color: #39CDCC06;
-            border-left: 3px solid $secondary-color;
-            padding-left: 27px;
-            opacity: 1;
-        }
-
     }
+}
+
+.selected {
+    background-color: #39CDCC06;
+    border-left: 4px solid $secondary-color;
+    padding-left: 27px;
+    opacity: 1;
 }
 
 .logout {

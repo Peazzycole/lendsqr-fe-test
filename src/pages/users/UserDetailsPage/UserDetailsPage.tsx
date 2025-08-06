@@ -17,7 +17,6 @@ export default function UserDetailsPage() {
         handleDeactivateUser,
     } = useUserDetails()
 
-    // Scroll to top on mount
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }, [])

@@ -20,7 +20,7 @@ const ProtectedRoutes = [
                 element: <UsersPage />
             },
             {
-                path: getNestedRoute(ROUTES.USER_DETAILS_ROUTE),
+                path: getNestedRoute(ROUTES.USER_DETAILS),
                 element: <UserDetailsPage />
             }
         ],

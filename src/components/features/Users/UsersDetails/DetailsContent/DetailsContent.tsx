@@ -9,7 +9,7 @@ export default function DetailsContent({ userDetails }: DetailsContentProps) {
     return (
         <div className={styles.container}>
             {/* personal information section */}
-            <div className={styles.section}>
+            <section className={styles.section}>
                 <h3>Personal Information</h3>
                 <div className={styles.grid}>
                     <div className={styles.singleInfo}>
@@ -45,13 +45,13 @@ export default function DetailsContent({ userDetails }: DetailsContentProps) {
                         <h4>{userDetails.residenceType}</h4>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* divider */}
             <div className={styles.divider}></div>
 
             {/* Education and Employment */}
-            <div className={styles.section}>
+            <section className={styles.section}>
                 <h3>Education and Employment</h3>
                 <div className={styles.grid}>
                     <div className={styles.singleInfo}>
@@ -83,13 +83,13 @@ export default function DetailsContent({ userDetails }: DetailsContentProps) {
                         <h4>₦{userDetails.loanRepayment.toLocaleString()}</h4>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* divider */}
             <div className={styles.divider}></div>
 
             {/* Socials */}
-            <div className={styles.section}>
+            <section className={styles.section}>
                 <h3>Social</h3>
                 <div className={styles.grid}>
                     <div className={styles.singleInfo}>
@@ -105,13 +105,13 @@ export default function DetailsContent({ userDetails }: DetailsContentProps) {
                         <h4>{userDetails.instagram}</h4>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/* divider */}
             <div className={styles.divider}></div>
 
             {/* Guarantor */}
-            <div className={styles.section}>
+            <section className={styles.section}>
                 <h3>{userDetails.guarantors.length > 1 ? "Guarantors" : "Guarantor"}</h3>
                 {userDetails.guarantors.map((guarantor, i) => (
                     <div className={styles.grid} key={i}>
@@ -133,7 +133,7 @@ export default function DetailsContent({ userDetails }: DetailsContentProps) {
                         </div>
                     </div>
                 ))}
-            </div>
+            </section>
         </div>
     )
 }

@@ -1,17 +1,18 @@
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import PublicRoutes from "./PublicRoutes";
 import ProtectedRoutes from "./ProtectedRoutes";
+import { ROUTES } from "@/utils";
 
 
 const AppRouter = () => {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: (<Navigate to='/dashboard' />),
+            element: (<Navigate to={ROUTES.USERS} />),
         },
         {
             path: "*",
-            element: (<Navigate to='/login' />),
+            element: (<Navigate to={ROUTES.LOGIN} />),
         },
         ...PublicRoutes,
         ...ProtectedRoutes,

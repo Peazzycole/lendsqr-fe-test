@@ -7,6 +7,7 @@ import userDeletecon from '@assets/images/activate.svg'
 import { useNavigate } from 'react-router-dom';
 import { saveUserDetails } from '@/services/storage/localStorage.service';
 import { useUsersStore } from '@/store/users.store';
+import { ROUTES } from '@/utils';
 
 interface ActionMenuProps {
     onClose: () => void;
@@ -21,7 +22,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId, status 
     const handleViewDetails = () => {
         const user = users.filter((val) => val.id === userId)
         saveUserDetails('selectedUser', user[0])
-        navigate(`/users/${userId}`)
+        navigate(ROUTES.GO_TO_USER_DETAILS(userId))
         onClose();
     };
 

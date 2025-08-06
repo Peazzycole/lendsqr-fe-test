@@ -1,18 +1,18 @@
-import styles from './DetailsCard.module.scss'
+import styles from './StatsCard.module.scss'
 
-interface DetailsCardProps {
+interface StatsCardProps {
     icon: string
     title: string
     amount: number
 }
 
-export default function DetailsCard({
+export default function StatsCard({
     icon,
     title,
     amount
-}: DetailsCardProps) {
+}: StatsCardProps) {
     return (
-        <div className={styles.detailsCard}>
+        <div className={styles.statsCard}>
             <div>
                 <img src={icon} alt="" />
             </div>

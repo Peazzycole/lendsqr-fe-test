@@ -23,8 +23,8 @@ export const ROUTES = {
   LOGIN: "/login",
   DASHBOARD: "/dashboard",
   USERS: "/users",
-  USER_DETAILS: (id: string | number) => `/users/${id}`,
-  USER_DETAILS_ROUTE: "/users/:userId",
+  GO_TO_USER_DETAILS: (id: string | number) => `/users/${id}`,
+  USER_DETAILS: "/users/:userId",
 } as const;
 
 // export const BASE_URL = "https://mock-api.net/api/lendsqr";

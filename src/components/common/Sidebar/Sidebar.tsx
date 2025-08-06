@@ -9,7 +9,8 @@ import logoutIcon from '../../../assets/images/sign-out.svg'
 import { ROUTES, SIDEBAR_MENUS } from '@/utils';
 import { X } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import clsx from 'clsx';
 
 interface SidebarProps {
     height?: string
@@ -20,6 +21,8 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
     const { setIsAuthenticated } = useAuthStore()
     const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location.pathname)
 
     const logoutHandler = () => {
         setIsAuthenticated(false)
@@ -44,7 +47,11 @@ const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
                 </div>
 
                 {/* Dashboard */}
-                <div className={styles.dashboard}>
+                <div className={clsx(styles.dashboard, {
+                    [styles.selected]: location.pathname.startsWith(`/dashboard`)
+                })}
+                    onClick={() => navigate(ROUTES.DASHBOARD)}
+                >
                     <img src={dashboard} alt="" />
                     <span>Dashboard</span>
                 </div>
@@ -56,7 +63,13 @@ const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
 
                             <ul>
                                 {menu.subCategories.map((category, i) => (
-                                    <li key={i} className={category.name === "Users" ? styles.selected : ""}>
+                                    <li key={i} className={location.pathname.startsWith(`/${category.name.toLocaleLowerCase()}`) ? styles.selected : ""}
+                                        onClick={() => {
+                                            if (category.name == 'Users') {
+                                                navigate(ROUTES.USERS)
+                                            }
+                                        }}
+                                    >
                                         <img src={category.icon} alt="" />
                                         <span>{category.name}</span>
                                     </li>

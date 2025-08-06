@@ -6,7 +6,7 @@ import peopleIcon from '@assets/images/people.svg'
 import fileIcon from '@assets/images/document.svg'
 import moneyIcon from '@assets/images/database.svg'
 import Loading from '@/components/ui/Loading/Loading'
-import DetailsCard from '@/components/features/Users/Users/DetailsCard/DetailsCard'
+import StatsCard from '@/components/features/Users/Users/StatsCard/StatsCard'
 import Pagination from '@/components/ui/Pagination/Pagination'
 import UsersTable from '@/components/features/Users/Users/UsersTable/UsersTable'
 import { useFetchUsers } from '@/hooks/useFetchUsers'
@@ -20,7 +20,6 @@ const UsersPage: React.FC = () => {
     const { setTempFilters, applyFilters, tempFilters, clearFilters, filteredUsers } = useUserFilters()
     const { currentPage, itemsPerPage, setCurrentPage, setItemsPerPage, currentItems } = usePagination(filteredUsers)
 
-    // Handle filter change
     const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setTempFilters({
             ...tempFilters,
@@ -44,22 +43,22 @@ const UsersPage: React.FC = () => {
 
             {/* Stats Cards */}
             <div className={styles.cardContainer}>
-                <DetailsCard
+                <StatsCard
                     icon={personIcon}
                     title="Users"
                     amount={stats.totalUsers}
                 />
-                <DetailsCard
+                <StatsCard
                     icon={peopleIcon}
                     title="Active Users"
                     amount={stats.activeUsers}
                 />
-                <DetailsCard
+                <StatsCard
                     icon={fileIcon}
                     title="Users with loans"
                     amount={stats.usersWithLoans}
                 />
-                <DetailsCard
+                <StatsCard
                     icon={moneyIcon}
                     title="Users with savings"
                     amount={stats.usersWithSavings}
