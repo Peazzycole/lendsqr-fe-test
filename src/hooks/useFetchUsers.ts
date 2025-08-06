@@ -22,7 +22,6 @@ export const useFetchUsers = () => {
   }, [isError]);
 
   useEffect(() => {
-    console.log(data);
     if (data) {
       setUsers(data);
     }
