@@ -1,6 +1,6 @@
 import styles from './DetailsCard.module.scss'
 
-type DetailsCardProps = {
+interface DetailsCardProps {
     icon: string
     title: string
     amount: number

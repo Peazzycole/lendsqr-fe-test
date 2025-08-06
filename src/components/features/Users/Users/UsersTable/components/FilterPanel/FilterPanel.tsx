@@ -3,17 +3,9 @@ import styles from './FilterPanel.module.scss';
 import { InputField, SelectInput } from '@/components/ui';
 import { useUserFilters } from '@/hooks/useUsersFilters';
 import { USERS_STATUS } from '@/utils';
+import type { FilterValues } from '@/types/user.types';
 
-interface FilterValues {
-    organization: string;
-    username: string;
-    email: string;
-    date: string;
-    phoneNumber: string;
-    status: string;
-}
-
-interface Props {
+interface FilterPanelProps {
     values: FilterValues;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
     onFilter: () => void;
@@ -21,7 +13,7 @@ interface Props {
     onReset: () => void
 }
 
-const FilterPanel: React.FC<Props> = ({ values, onChange, onFilter, onClose, onReset }) => {
+const FilterPanel: React.FC<FilterPanelProps> = ({ values, onChange, onFilter, onClose, onReset }) => {
     const { uniqueOrganizations } = useUserFilters();
 
     return (

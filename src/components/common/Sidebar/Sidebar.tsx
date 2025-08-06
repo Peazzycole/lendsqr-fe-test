@@ -11,7 +11,7 @@ import { X } from 'lucide-react';
 import { useAuthStore } from '@/store/auth.store';
 import { useNavigate } from 'react-router-dom';
 
-type SidebarProps = {
+interface SidebarProps {
     height?: string
     boxShadow?: string
     toggleMenu?: () => void

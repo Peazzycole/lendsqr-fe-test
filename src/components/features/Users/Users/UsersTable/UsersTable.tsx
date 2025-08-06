@@ -4,21 +4,12 @@ import styles from './UsersTable.module.scss';
 import filterIcon from '@assets/images/filter-results-button.svg'
 import menuIcon from '@assets/images/menu.svg'
 // import { ActionMenu } from '../actionMenu/ActionMenu';
-import type { UserDto } from '@/types/user.types';
+import type { FilterValues, UserDto } from '@/types/user.types';
 import { formatDate } from '@/utils';
 import { ActionMenu } from './components/ActionMenu/ActionMenu';
 import FilterPanel from './components/FilterPanel/FilterPanel';
 
-interface FilterValues {
-    organization: string;
-    username: string;
-    email: string;
-    date: string;
-    phoneNumber: string;
-    status: string;
-}
-
-interface UsersTable {
+interface UsersTableProps {
     data: UserDto[];
     filters: FilterValues
     onFilterChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -32,7 +23,7 @@ export default function UsersTable({
     onFilterChange,
     onFilterApply,
     clearFilters
-}: UsersTable) {
+}: UsersTableProps) {
 
     const [showFilter, setShowFilter] = useState<boolean>(false);
     const [actionMenuOpen, setActionMenuOpen] = useState<string | null>(null);

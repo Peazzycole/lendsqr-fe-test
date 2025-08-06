@@ -45,3 +45,12 @@ export interface UserDto {
   username: string;
   dateJoined: string;
 }
+
+export interface FilterValues {
+  organization: string;
+  username: string;
+  email: string;
+  date: string;
+  phoneNumber: string;
+  status: string;
+}
