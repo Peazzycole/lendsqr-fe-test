@@ -27,6 +27,8 @@ export const ROUTES = {
   USER_DETAILS_ROUTE: "/users/:userId",
 } as const;
 
+export const BASE_URL = "https://mock-api.net/api/lendsqr";
+
 export const SIDEBAR_MENUS = [
   {
     name: "Customers",

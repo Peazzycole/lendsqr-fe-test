@@ -1,11 +1,10 @@
 import SelectInput from '../SelectInput/SelectInput';
 import styles from './Pagination.module.scss';
-import type { Dispatch, SetStateAction } from 'react';
 
 interface PaginationProps {
     totalItems: number;
     itemsPerPage: number;
-    setItemsPerPage: Dispatch<SetStateAction<number>>
+    setItemsPerPage: (items: number) => void
     currentPage: number;
     setCurrentPage: (val: number) => void
 }
