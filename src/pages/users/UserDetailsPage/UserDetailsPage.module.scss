@@ -1,0 +1,76 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.container {
+    padding-top: 96px;
+}
+
+.arrowBack {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    cursor: pointer;
+    margin-bottom: 32px;
+
+    span {
+        font-weight: normal;
+        font-size: $text-md;
+        line-height: 100%;
+        color: $text-primary-color;
+    }
+}
+
+.headerTextAndButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include breakpoint('md') {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    h1 {
+        color: $text-secondary-color;
+        font-size: $text-2xl;
+        line-height: 100%;
+        font-weight: 500;
+        width: 100%;
+    }
+
+    div {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        justify-content: end;
+
+        @include breakpoint('md') {
+            justify-content: flex-start;
+        }
+
+        button {
+            width: 100%;
+            max-width: 170px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid $secondary-color;
+            color: #39CDCC;
+            font-weight: 600;
+            font-size: $text-sm;
+            letter-spacing: 10%;
+            text-transform: uppercase;
+            line-height: 100%;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        .danger {
+            border: 1px solid #E4033B;
+            color: #E4033B;
+        }
+    }
+}

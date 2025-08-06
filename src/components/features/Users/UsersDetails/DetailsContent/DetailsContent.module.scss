@@ -1,0 +1,76 @@
+@use '../../../../../styles/abstracts/variables' as *;
+@use '../../../../../styles/abstracts/mixins' as *;
+
+.container {
+    background-color: #FFFFFF;
+    box-shadow: 3px 5px 20px 0 #0000000A;
+    border: 1px solid #213F7D0F;
+    border-radius: 4px;
+    padding: 30px 30px 40px 30px;
+    margin-top: 30px;
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #213F7D10;
+        margin-block: 30px;
+    }
+
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h3 {
+        color: $text-secondary-color;
+        font-size: $text-md;
+        font-weight: 500;
+    }
+}
+
+.singleInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    span {
+        color: $text-primary-color;
+        font-weight: 400;
+        font-size: $text-xs;
+        text-transform: uppercase;
+    }
+
+    h4 {
+        color: $text-primary-color;
+        font-weight: 500;
+        font-size: $text-md;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+
+    // @include breakpoint(2xl) {
+    //     grid-template-columns: repeat(4, 1fr);
+    // }
+
+    @include breakpoint(xl) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint(lg) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint(md) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint(sm) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

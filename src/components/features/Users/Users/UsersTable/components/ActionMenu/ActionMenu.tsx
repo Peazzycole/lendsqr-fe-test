@@ -7,7 +7,6 @@ import userDeletecon from '@assets/images/activate.svg'
 import { useNavigate } from 'react-router-dom';
 import { saveUserDetails } from '@/services/storage/localStorage.service';
 import { useUsersStore } from '@/store/users.store';
-import { toast } from 'sonner';
 
 interface ActionMenuProps {
     onClose: () => void;
@@ -28,20 +27,16 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({ onClose, userId, status 
 
     const handleBlacklistUser = () => {
         blacklistUser(userId)
-        toast.success("Successful blacklisted user")
         onClose();
     };
 
     const handleActivateUser = () => {
         activateUser(userId)
-        toast.success("Successful activated user")
         onClose();
     };
 
     const handleDeactivateUser = () => {
         deactivateUser(userId)
-        toast.success("Successful deactivated user")
-
         onClose();
     };
 

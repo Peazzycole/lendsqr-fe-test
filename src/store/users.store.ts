@@ -1,5 +1,6 @@
 import type { UserDto } from "@/types/user.types";
 import { calculateStats } from "@/utils";
+import { toast } from "sonner";
 import { create } from "zustand";
 
 interface UserStats {
@@ -47,6 +48,7 @@ export const useUsersStore = create<UsersStore>((set) => ({
         stats: calculateStats(updatedUsers),
       };
     });
+    toast.success("Successful activated user");
   },
 
   deactivateUser: (userId) => {
@@ -60,6 +62,7 @@ export const useUsersStore = create<UsersStore>((set) => ({
         stats: calculateStats(updatedUsers),
       };
     });
+    toast.success("Successful deactivated user");
   },
 
   blacklistUser: (userId) => {
@@ -67,11 +70,11 @@ export const useUsersStore = create<UsersStore>((set) => ({
       const updatedUsers = state.users.map((user) =>
         user.id === userId ? { ...user, status: "blacklisted" } : user
       );
-
       return {
         users: updatedUsers,
         stats: calculateStats(updatedUsers),
       };
     });
+    toast.success("Successful blacklisted user");
   },
 }));

@@ -6,7 +6,7 @@ export const saveUserDetails = (key: string, data: UserDto) => {
 };
 
 // Retrieve user details from local storage
-export const getUserDetails = (key: string) => {
+export const getUserDetails = (key: string): UserDto | null => {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : null;
 };
