@@ -4,9 +4,11 @@
 .formContainer {
     flex: 1;
     background-color: #FFFFFF;
+    box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     .logo {
         display: none;
@@ -32,7 +34,7 @@
     .login {
         display: flex;
         flex-direction: column;
-        margin-left: 100px;
+        margin-right: 100px;
         max-width: 447px;
         width: 100%;
 

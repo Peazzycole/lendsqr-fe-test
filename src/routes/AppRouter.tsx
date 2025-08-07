@@ -8,7 +8,7 @@ const AppRouter = () => {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: (<Navigate to={ROUTES.USERS} />),
+            element: (<Navigate to={ROUTES.LOGIN} />), // Because I want to start from the loginPage on initial render
         },
         {
             path: "*",

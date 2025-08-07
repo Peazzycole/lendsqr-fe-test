@@ -36,7 +36,7 @@ export default function LoginForm() {
                 onSubmit={onSubmitHandler}
                 validationSchema={loginSchema}
             >
-                {({ handleSubmit, values, handleChange, errors }) => (
+                {({ handleSubmit, values, handleChange, errors, touched }) => (
                     <form className={styles.login} onSubmit={handleSubmit}>
                         <h1>Welcome!</h1>
                         <h2>Enter details to login</h2>
@@ -49,7 +49,7 @@ export default function LoginForm() {
                                 value={values.email}
                                 onChange={handleChange}
                                 animatePlaceholder={true}
-                                error={errors.email}
+                                error={touched.email ? errors.email : ''}
                             />
                             <InputField
                                 type="password"
@@ -58,7 +58,7 @@ export default function LoginForm() {
                                 value={values.password}
                                 onChange={handleChange}
                                 animatePlaceholder={true}
-                                error={errors.password}
+                                error={touched.password ? errors.password : ''}
                             />
                             <p>Forgot Password?</p>
                         </div>
