@@ -10,7 +10,8 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    // "verbatimModuleSyntax": true,
+    "esModuleInterop": true,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
@@ -36,7 +37,8 @@
       "@routes/*": ["src/routes/*"],
       "@hooks/*": ["src/hooks/*"],
       "@assets/*": ["src/assets/*"],
+      "@tests/*": ["src/tests/*"],
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/tests", "jest.setup.ts"]
 }
