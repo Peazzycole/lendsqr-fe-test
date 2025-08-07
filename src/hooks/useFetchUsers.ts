@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { UsersAPI } from "@/services/api/users.api";
-// import { toast } from "sonner";
 import { useUsersStore } from "@/store/users.store";
 import { useEffect } from "react";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 export const useFetchUsers = () => {
   const { setUsers } = useUsersStore();

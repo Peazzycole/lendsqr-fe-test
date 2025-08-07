@@ -1,6 +1,6 @@
 import type { UserDto } from "@/types/user.types";
 import { calculateStats } from "@/utils";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import { create } from "zustand";
 
 interface UserStats {
