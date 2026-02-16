@@ -124,3 +124,5 @@ describe("Pagination Component", () => {
     expect(screen.queryByText("2")).not.toBeInTheDocument();
   });
 });
+
+

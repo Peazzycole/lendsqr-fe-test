@@ -23,3 +23,5 @@ export const calculateStats = (users: UserDto[]) => ({
   usersWithLoans: users.filter((u) => u.loanRepayment > 0).length,
   usersWithSavings: users.filter((u) => u.savings > 0).length,
 });
+
+

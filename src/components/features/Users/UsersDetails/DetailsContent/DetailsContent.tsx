@@ -137,3 +137,5 @@ export default function DetailsContent({ userDetails }: DetailsContentProps) {
         </div>
     )
 }
+
+

@@ -107,3 +107,5 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ values, onChange, onFilter, o
 };
 
 export default FilterPanel;
+
+

@@ -143,3 +143,4 @@ The API base URL is set in `src/utils/constants.ts` as `BASE_URL`. To use a diff
 ## License
 
 This project is licensed under the MIT License.
+

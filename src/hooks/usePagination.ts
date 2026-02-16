@@ -22,3 +22,5 @@ export const usePagination = <T>(data: T[], defaultItemsPerPage = 10) => {
     currentItems,
   };
 };
+
+

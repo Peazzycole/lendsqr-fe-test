@@ -161,3 +161,5 @@ describe('FilterPanel', () => {
         // Should still render without crashing
     });
 });
+
+

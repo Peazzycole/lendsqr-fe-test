@@ -87,3 +87,5 @@ const Sidebar: React.FC<SidebarProps> = ({ height, boxShadow, toggleMenu }) => {
 };
 
 export default Sidebar;
+
+

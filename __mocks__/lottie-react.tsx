@@ -7,3 +7,4 @@ const Lottie: React.FC<any> = () => {
 
 
 export default Lottie;
+
